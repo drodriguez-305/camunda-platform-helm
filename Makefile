@@ -1,7 +1,7 @@
 # Makefile for managing the Helm charts
 
 chartPath=charts/camunda-platform
-chartVersion=$(shell grep -Po '(?<=^version: ).+' $(chartPath)/Chart.yaml)
+chartVersion=8.3.2
 releaseName=camunda-platform-test
 gitChglog=quay.io/git-chglog/git-chglog:0.15.1
 
