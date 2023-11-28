@@ -83,7 +83,7 @@ jobs:
           find . -name "*.bundle" -exec ls -lsa {} \;
           cosign verify-blob .cr-release-packages/camunda-platform-${CHART_VERSION}.tgz \
             --bundle ./camunda-platform-${CHART_VERSION}-cosign.bundle \
-            --certificate-identity "https://github.com/camunda/camunda-platform-helm/.github/workflows/chart-release.yaml@refs/heads/cosign-github-actions" \
+            --certificate-identity "https://github.com/drodriguez-305/camunda-platform-helm/.github/workflows/chart-release.yaml@refs/heads/cosign-github-actions" \
             --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
           mkdir -p docs/bundles
           cp ./camunda-platform-${CHART_VERSION}-cosign.bundle docs/bundles/camunda-platform-${CHART_VERSION}-cosign.bundle
@@ -92,7 +92,7 @@ jobs:
           git add docs/bundles/camunda-platform-${CHART_VERSION}-cosign.bundle
           git commit -m "Update Cosign bundle"
           # Push to the same branch; adjust if using a different branch for GitHub Pages
-          git push release HEAD:${{ github.ref }}
+          git push origin HEAD:${{ github.ref }}
 
 
   verify:
