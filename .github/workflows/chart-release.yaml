@@ -90,7 +90,8 @@ jobs:
           cr upload  --owner "$GITHUB_ACTOR" \
           --packages-with-index \
           --token ${{ secrets.GITHUB_TOKEN }} \
-          --git-repo release \ 
+          --pages-branch string gh-pages \
+          --git-repo https://github.com/drodriguez-305/camunda-platform-helm/ \ 
           --push \
           --skip-existing
           # git config user.name "$GITHUB_ACTOR"
