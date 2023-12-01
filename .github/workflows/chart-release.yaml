@@ -87,7 +87,12 @@ jobs:
             --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
           mkdir -p docs/bundles
           cp ./camunda-platform-${CHART_VERSION}-cosign.bundle .cr-release-packages/camunda-platform-${CHART_VERSION}-cosign.bundle
-          cr upload -packages-with-index
+          cr upload --packages-with-index \ 
+          --owner "$GITHUB_ACTOR" \
+          --token ${{ secrets.GITHUB_TOKEN }} \
+          --git-repo release \ 
+          --push \
+          --skip-existing
           # git config user.name "$GITHUB_ACTOR"
           # git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           # git add docs/bundles/camunda-platform-${CHART_VERSION}-cosign.bundle
