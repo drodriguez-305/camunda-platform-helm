@@ -89,7 +89,7 @@ jobs:
           # mkdir -p docs/bundles
           cp ./camunda-platform-${CHART_VERSION}-cosign.bundle .cr-release-packages/camunda-platform-${CHART_VERSION}-cosign.bundle
           cr upload  --owner "$GITHUB_ACTOR" \
-          --packages-with-index \
+          # --packages-with-index \
           --token ${{ secrets.GITHUB_TOKEN }} \
           --git-repo camunda-platform-helm \ 
           --pages-branch gh-pages \
