@@ -93,12 +93,9 @@ jobs:
           --push \
           --skip-existing \
 
-
           gh release -R drodriguez-305/camunda-platform-helm upload "camunda-platform-${CHART_VERSION}" ./camunda-platform-${CHART_VERSION}-cosign.bundle 
         env:
           GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'  
-
-
 
   verify:
     needs: release
