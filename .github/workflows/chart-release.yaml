@@ -95,12 +95,9 @@ jobs:
           --skip-existing \
 
           gh release -R drodriguez-305/camunda-platform-helm upload "$GITHUB_REF_NAME" .cr-release-packages/camunda-platform-${CHART_VERSION}-cosign.bundle 
+        env:
+          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'  
 
-          # git config user.name "$GITHUB_ACTOR"
-          # git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          # git add docs/bundles/camunda-platform-${CHART_VERSION}-cosign.bundle
-          # git commit -m "Update Cosign bundle"
-          # git push release HEAD:${{ github.ref }}
 
 
   verify:
