@@ -90,7 +90,7 @@ jobs:
           cr upload  --owner "$GITHUB_ACTOR" \
           --packages-with-index \
           --token ${{ secrets.GITHUB_TOKEN }} \
-          --git-repo drodriguez-305/camunda-platform-helm \ 
+          --git-repo /camunda-platform-helm \ 
           --pages-branch gh-pages \
           --push \
           
