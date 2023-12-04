@@ -74,7 +74,7 @@ jobs:
         env:
           CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           CR_SKIP_EXISTING: 'true'
-      - name: cmd
+      - name: Signing 
         run: |
           cd charts/camunda-platform
           cr package .
@@ -86,7 +86,6 @@ jobs:
             --bundle ./camunda-platform-${CHART_VERSION}-cosign.bundle \
             --certificate-identity "https://github.com/drodriguez-305/camunda-platform-helm/.github/workflows/chart-release.yaml@refs/heads/cosign-github-actions" \
             --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
-          # cp ./camunda-platform-${CHART_VERSION}-cosign.bundle .cr-release-packages/camunda-platform-${CHART_VERSION}-cosign.bundle
           cr upload  --owner "$GITHUB_ACTOR" \
           --token ${{ secrets.GITHUB_TOKEN }} \
           --git-repo camunda-platform-helm \
