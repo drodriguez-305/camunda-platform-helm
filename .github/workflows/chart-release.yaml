@@ -94,7 +94,7 @@ jobs:
           --push \
           --skip-existing \
 
-          gh release -R drodriguez-305/camunda-platform-helm upload "$GITHUB_REF_NAME" .cr-release-packages/camunda-platform-${CHART_VERSION}-cosign.bundle 
+          gh release -R drodriguez-305/camunda-platform-helm upload "${CHART_VERSION}" .cr-release-packages/camunda-platform-${CHART_VERSION}-cosign.bundle 
         env:
           GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'  
 
