@@ -46,14 +46,8 @@ jobs:
           fetch-depth: 0
       - name: Set up script permissions
         run: chmod +x ./scripts/remove_notes_todo_script.sh
-        
-
       - name: Run Cleanup Script
         run: ./scripts/remove_notes_todo_script.sh
-      - name: List Files
-        run: ls -l
-        
-
       - name: Upload Log File as Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -130,3 +124,6 @@ jobs:
           timeout_minutes: 5
           retry_wait_seconds: 10
           command: make release.verify-components-version
+        
+
+        
