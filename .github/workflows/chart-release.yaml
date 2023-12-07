@@ -14,7 +14,7 @@ on:
       - labeled
   push:
     branches:
-      - cosign-github-actions
+      - remove_dev_notes
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -45,11 +45,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set up script permissions
-        run: chmod +x ./scripts/cleanup_script.sh
+        run: chmod +x ./scripts/remove_notes_todo_script.sh
         working-directory: charts/camunda-platform
 
       - name: Run Cleanup Script
-        run: ../scripts/cleanup_script.sh
+        run: ../scripts/remove_notes_todo_script.sh
         working-directory: charts/camunda-platform
 
       - name: Upload Log File as Artifact
