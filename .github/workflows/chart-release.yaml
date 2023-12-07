@@ -99,7 +99,7 @@ jobs:
           find . -name "*.bundle" -exec ls -lsa {} \;
           cosign verify-blob .cr-release-packages/camunda-platform-${CHART_VERSION}.tgz \
             --bundle ./camunda-platform-${CHART_VERSION}-cosign.bundle \
-            --certificate-identity "https://github.com/drodriguez-305/camunda-platform-helm/.github/workflows/chart-release.yaml@refs/heads/cosign-github-actions" \
+            --certificate-identity "https://github.com/drodriguez-305/camunda-platform-helm/.github/workflows/chart-release.yaml@refs/heads/remove_dev_notes" \
             --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
           cr upload  --owner "$GITHUB_ACTOR" \
           --token ${{ secrets.GITHUB_TOKEN }} \
