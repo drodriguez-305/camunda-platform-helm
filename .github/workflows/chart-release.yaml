@@ -49,7 +49,7 @@ jobs:
         
 
       - name: Run Cleanup Script
-        run: ../scripts/remove_notes_todo_script.sh
+        run: ./scripts/remove_notes_todo_script.sh
         
 
       - name: Upload Log File as Artifact
