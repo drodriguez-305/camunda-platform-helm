@@ -30,7 +30,7 @@ jobs:
     steps:
       # Checkout.
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           fetch-depth: 0
           ref: "${{ inputs.camunda-helm-git-ref }}"
@@ -45,11 +45,11 @@ jobs:
         run: |
           echo "check-version-increment: false" >> .github/config/chart-testing.yaml
       # Dependencies.
-      - uses: actions/setup-python@f677139bbe7f9c59b41e40162b753c062f5d49a3 # v5
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6
         with:
           python-version: 3.7
       - name: Install dependencies
-        uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3
+        uses: asdf-vm/actions/install@1902764435ca0dd2f3388eea723a4f92a4eb8302 # v4
       - name: Add helm repos
         run: |
           make helm.repos-add
