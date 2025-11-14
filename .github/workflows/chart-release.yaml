@@ -29,7 +29,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
         with:
           fetch-depth: 0
       - name: Install env dependencies
@@ -45,7 +45,7 @@ jobs:
           done
           echo "Dev comments removed:"
           git --no-pager diff
-      - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: |
             ~/.cache/go-build
@@ -59,7 +59,7 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - name: Install Chart Releaser
-        uses: helm/chart-releaser-action@a917fd15b20e8b64b94d9158ad54cd6345335584 # v1.6.0
+        uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f # v1.7.0
         with:
           install_only: true
         env:
@@ -73,7 +73,7 @@ jobs:
           chartPath="$(ct list-changed | tr '\n' ' ')" \
             make helm.dependency-update
       - name: cosign-installer
-        uses: sigstore/cosign-installer@4959ce089c160fddf62f7b42464195ba1a56d382 # v3.6.0
+        uses: sigstore/cosign-installer@7e8b541eb2e61bf99390e1afd4be13a184e9ebc5 # v3.10.1
       - name: Tidy up
         run: |
           # Clean up badges from readme to avoid showing them in Artifact Hub.
@@ -92,7 +92,7 @@ jobs:
           rm -rf charts/camunda-platform-latest
           rm -rf charts/camunda-platform-alpha
       - name: Run Chart Releaser - Previous versions
-        uses: helm/chart-releaser-action@a917fd15b20e8b64b94d9158ad54cd6345335584 # v1.6.0
+        uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f # v1.7.0
         with:
           config: .github/config/chart-releaser.yaml
         env:
@@ -109,7 +109,7 @@ jobs:
           rm -rf charts/camunda-platform-8*
           rm -rf charts/camunda-platform-alpha
       - name: Run Chart Releaser - Latest version
-        uses: helm/chart-releaser-action@a917fd15b20e8b64b94d9158ad54cd6345335584 # v1.6.0
+        uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f # v1.7.0
         with:
           config: .github/config/chart-releaser.yaml
         env:
@@ -166,7 +166,7 @@ jobs:
       issues: write
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
         with:
           # The verification step happens in the release branch before merging into the "main" branch.
           fetch-depth: 0

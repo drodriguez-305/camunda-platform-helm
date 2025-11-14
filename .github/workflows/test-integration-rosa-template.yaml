@@ -65,7 +65,7 @@ jobs:
     outputs:
       platform-matrix: ${{ steps.matrix.outputs.platform-matrix }}
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
         with:
           fetch-depth: 0
 
@@ -101,7 +101,7 @@ jobs:
         distro: ${{ fromJson(needs.clusters-info.outputs.platform-matrix).distro }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
         with:
           fetch-depth: 0
 
@@ -112,7 +112,7 @@ jobs:
           aws configure set aws_access_key_id ${{ secrets.DISTRO_CI_AWS_ACCESS_KEY }} --profile=${{ secrets.DISTRO_CI_AWS_PROFILE }}
 
       - name: Create ROSA cluster and login
-        uses: camunda/camunda-tf-rosa/.github/actions/rosa-create-cluster@d0471d28cb3eb13cd2212b63cc8e50d457d829c4 # main
+        uses: camunda/camunda-tf-rosa/.github/actions/rosa-create-cluster@4a03c81a5fd29d5019dfb2d320fe8755e7c6e6e9 # main
         timeout-minutes: 125
         env:
           AWS_PROFILE: ${{ secrets.DISTRO_CI_AWS_PROFILE }}
@@ -135,7 +135,7 @@ jobs:
           private_key: ${{ secrets.GH_APP_PRIVATE_KEY_DISTRO_CI }}
 
       - name: Clone the distribution GitOps repo
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
         with:
           repository: "camunda/distribution"
           ref: "main"
@@ -146,7 +146,7 @@ jobs:
       - name: Configure on-demand cluster ROSA
         timeout-minutes: 10
         # we need to retry as CRDs can take some time to be installed
-        uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
+        uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3
         with:
           timeout_minutes: 10
           max_attempts: 40
@@ -281,7 +281,7 @@ jobs:
           aws configure set aws_access_key_id ${{ secrets.DISTRO_CI_AWS_ACCESS_KEY }} --profile=${{ secrets.DISTRO_CI_AWS_PROFILE }}
 
       - name: Delete on-demand ROSA HCP Cluster
-        uses: camunda/camunda-tf-rosa/.github/actions/rosa-delete-cluster@d0471d28cb3eb13cd2212b63cc8e50d457d829c4 # main
+        uses: camunda/camunda-tf-rosa/.github/actions/rosa-delete-cluster@4a03c81a5fd29d5019dfb2d320fe8755e7c6e6e9 # main
         if: always()
         timeout-minutes: 125
         env:
