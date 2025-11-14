@@ -29,11 +29,11 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           fetch-depth: 0
       - name: Install env dependencies
-        uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3
+        uses: asdf-vm/actions/install@1902764435ca0dd2f3388eea723a4f92a4eb8302 # v4
       - name: Remove Dev Comments
         run: |
           TARGET_FILES=(
@@ -73,7 +73,7 @@ jobs:
           chartPath="$(ct list-changed | tr '\n' ' ')" \
             make helm.dependency-update
       - name: cosign-installer
-        uses: sigstore/cosign-installer@4959ce089c160fddf62f7b42464195ba1a56d382 # v3.6.0
+        uses: sigstore/cosign-installer@faadad0cce49287aee09b3a48701e75088a2c6ad # v4.0.0
       - name: Tidy up
         run: |
           # Clean up badges from readme to avoid showing them in Artifact Hub.
@@ -166,13 +166,13 @@ jobs:
       issues: write
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           # The verification step happens in the release branch before merging into the "main" branch.
           fetch-depth: 0
           ref: release-please--branches--main
       - name: Install env dependencies
-        uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3
+        uses: asdf-vm/actions/install@1902764435ca0dd2f3388eea723a4f92a4eb8302 # v4
       # - name: Simple smoke test
       #   uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
       #   with:
