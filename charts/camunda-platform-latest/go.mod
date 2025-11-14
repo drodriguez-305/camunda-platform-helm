@@ -3,9 +3,9 @@ module camunda-platform
 go 1.22.2
 
 require (
-	github.com/BurntSushi/toml v1.4.0
-	github.com/gruntwork-io/terratest v0.47.2
-	github.com/stretchr/testify v1.9.0
+	github.com/BurntSushi/toml v1.5.0
+	github.com/gruntwork-io/terratest v0.53.0
+	github.com/stretchr/testify v1.11.1
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/api v0.28.4
 )
