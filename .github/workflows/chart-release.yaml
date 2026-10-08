@@ -29,11 +29,11 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
       - name: Install env dependencies
-        uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3
+        uses: asdf-vm/actions/install@b7bcd026f18772e44fe1026d729e1611cc435d47 # v4
       - name: Remove Dev Comments
         run: |
           TARGET_FILES=(
@@ -45,7 +45,7 @@ jobs:
           done
           echo "Dev comments removed:"
           git --no-pager diff
-      - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: |
             ~/.cache/go-build
@@ -73,7 +73,7 @@ jobs:
           chartPath="$(ct list-changed | tr '\n' ' ')" \
             make helm.dependency-update
       - name: cosign-installer
-        uses: sigstore/cosign-installer@4959ce089c160fddf62f7b42464195ba1a56d382 # v3.6.0
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
       - name: Tidy up
         run: |
           # Clean up badges from readme to avoid showing them in Artifact Hub.
@@ -166,13 +166,13 @@ jobs:
       issues: write
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           # The verification step happens in the release branch before merging into the "main" branch.
           fetch-depth: 0
           ref: release-please--branches--main
       - name: Install env dependencies
-        uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3
+        uses: asdf-vm/actions/install@b7bcd026f18772e44fe1026d729e1611cc435d47 # v4
       # - name: Simple smoke test
       #   uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
       #   with:
@@ -190,7 +190,7 @@ jobs:
           make helm.repos-add
           make release.generate-version-matrix-index
           make release.generate-version-matrix-released
-      - uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
+      - uses: EndBug/add-and-commit@cc9c08ba6c8df3b93a8f2db63e89b98368ae2ae8 # v11.1.1
         with:
           author_name: "renovate[bot]"
           author_email: "29139614+renovate[bot]@users.noreply.github.com"
